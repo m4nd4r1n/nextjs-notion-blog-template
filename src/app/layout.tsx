@@ -1,5 +1,8 @@
 import type { Metadata } from 'next';
 
+import { codeFont, mainFont } from '@/libs/fonts';
+import { cn } from '@/utils/cn';
+
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -14,7 +17,15 @@ const RootLayout = ({
 }>) => {
   return (
     <html lang='en'>
-      <body>{children}</body>
+      <body
+        className={cn(
+          'font-sans antialiased',
+          mainFont.variable,
+          codeFont.variable,
+        )}
+      >
+        {children}
+      </body>
     </html>
   );
 };
