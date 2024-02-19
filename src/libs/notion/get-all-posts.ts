@@ -38,8 +38,8 @@ export const getAllPosts = cache<GetAllPosts>(async ({ includePages }) => {
     const pageIds = getAllPageIds(collectionQuery);
     const tagColorMap = getTagColors(schema);
     const pageCoverMap = getPageCovers(block);
-    const propertiesArray = await Promise.all(
-      pageIds.map((id) => getPageProperties(id, block, schema)),
+    const propertiesArray = pageIds.map((id) =>
+      getPageProperties(id, block, schema),
     );
     const posts: Post[] = pageIds.map((id, index) => {
       const properties = propertiesArray[index];

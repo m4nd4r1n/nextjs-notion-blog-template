@@ -10,13 +10,9 @@ type GetPageProperties = (
   id: string,
   block: ExtendedRecordMap['block'],
   schema: Collection['schema'],
-) => Promise<Properties>;
+) => Properties;
 
-export const getPageProperties: GetPageProperties = async (
-  id,
-  block,
-  schema,
-) => {
+export const getPageProperties: GetPageProperties = (id, block, schema) => {
   const rawProperties = Object.entries(block?.[id]?.value?.properties || []);
   const excludeProperties = ['date', 'select', 'multi_select'];
 
