@@ -4,7 +4,7 @@ export type PostStatus = 'Idea' | 'Revise' | 'Published' | 'Draft';
 
 export type Properties = {
   id?: string;
-  date?: { start_date?: string };
+  date?: { start_date?: string; time_zone?: string; start_time?: string };
   type?: [PostType] | string[];
   slug?: string;
   tags?: string[];
@@ -15,7 +15,6 @@ export type Properties = {
 
 export type Post = {
   date: number;
-  fullWidth: boolean;
   tags: {
     tag: string;
     color: SelectColor;
