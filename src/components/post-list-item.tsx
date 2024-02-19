@@ -1,9 +1,9 @@
 import type { FC } from 'react';
 
+import FormattedDate from '@/components/formatted-date';
 import Link from '@/components/link';
 import TagItem from '@/components/tag-item';
 import type { Post } from '@/types';
-import { formatDate } from '@/utils/format-date';
 
 interface PostListItemProps {
   post: Post;
@@ -15,14 +15,7 @@ const PostListItem: FC<PostListItemProps> = ({ post }) => {
   return (
     <li className='py-10'>
       <article key={post.id} className='space-y-2'>
-        <dl>
-          <dt className='sr-only'>Published on</dt>
-          <dd className='text-base font-medium text-gray-500 dark:text-gray-400'>
-            <time dateTime={new Date(post.date).toISOString()}>
-              {formatDate(post.date)}
-            </time>
-          </dd>
-        </dl>
+        <FormattedDate date={post.date} />
         <div className='space-y-5'>
           <div className='space-y-6'>
             <div className='space-y-1'>
