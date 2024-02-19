@@ -22,7 +22,7 @@ const ListLayout: FC<ListLayoutProps> = ({
 
   return (
     <>
-      <ul className='divide-y divide-gray-200 dark:divide-gray-700'>
+      <ul className='divide-y divide-neutral-200 dark:divide-neutral-700'>
         {postsToShow.map((post) => (
           <PostListItem key={post.id} post={post} />
         ))}
@@ -56,12 +56,14 @@ const Pagination: FC<PaginationProps> = ({
 
   return (
     <nav className='flex justify-between'>
-      {isFirstPage && (
-        <button className='opacity-50' disabled={isFirstPage}>
+      {isFirstPage ? (
+        <button
+          className='text-neutral-900 opacity-50 dark:text-neutral-100'
+          disabled={isFirstPage}
+        >
           &larr; Prev
         </button>
-      )}
-      {!isFirstPage && (
+      ) : (
         <Link
           className='block'
           href={isSecondPage ? '/' : `/page/${currentPage - 1}`}
@@ -71,17 +73,19 @@ const Pagination: FC<PaginationProps> = ({
         </Link>
       )}
 
-      <span>
+      <span className='text-neutral-900 dark:text-neutral-100'>
         {currentPage} / {totalPages}
       </span>
 
-      {showNext && (
+      {showNext ? (
         <Link className='block' href={`/page/${currentPage + 1}`} rel='next'>
           Next &rarr;
         </Link>
-      )}
-      {!showNext && (
-        <button className='opacity-50' disabled={!showNext}>
+      ) : (
+        <button
+          className='text-neutral-900 opacity-50 dark:text-neutral-100'
+          disabled={!showNext}
+        >
           Next &rarr;
         </button>
       )}
