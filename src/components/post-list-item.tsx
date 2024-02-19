@@ -20,10 +20,7 @@ const PostListItem: FC<PostListItemProps> = ({ post }) => {
           <div className='space-y-6'>
             <div className='space-y-1'>
               <h2 className='text-2xl font-bold leading-8 tracking-tight'>
-                <Link
-                  className='text-neutral-900 hover:text-neutral-600 dark:text-neutral-100 dark:hover:text-neutral-400'
-                  href={postHref}
-                >
+                <Link variant='secondary' href={postHref}>
                   {post.title}
                 </Link>
               </h2>

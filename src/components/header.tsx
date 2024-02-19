@@ -1,7 +1,7 @@
 import Image from 'next/image';
-import Link from 'next/link';
 
 import config from '@/../blog.config';
+import Link from '@/components/link';
 
 const Header = () => {
   return (
@@ -47,7 +47,7 @@ const NavBar = () => {
                 className='nav block text-black dark:text-gray-50'
               >
                 <Link
-                  className='text-neutral-900 hover:text-neutral-600 motion-safe:transition-colors dark:text-neutral-100 dark:hover:text-neutral-300'
+                  variant='secondary'
                   href={link.to}
                   target={link.external ? '_blank' : undefined}
                 >
