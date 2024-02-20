@@ -12,4 +12,19 @@ export default blogConfig({
   sortByDate: true,
   showAbout: true,
   siteLogo: '/logo.png',
+  comments: {
+    provider: 'giscus',
+    giscusConfig: {
+      repo: 'm4nd4r1n/blog-comment',
+      repoId: 'R_kgDOKHzBrw',
+      category: 'Announcements',
+      categoryId: 'DIC_kwDOKHzBr84CYpHD',
+      mapping: 'pathname',
+      strict: '0',
+      reactionsEnabled: '1',
+      emitMetadata: '0',
+      inputPosition: 'top',
+      lang: 'ko',
+    },
+  },
 });

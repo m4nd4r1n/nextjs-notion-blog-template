@@ -1,3 +1,5 @@
+import { CommentsConfig } from './comments';
+
 export type Locale = 'en-US' | 'ko-KR';
 
 export interface BlogConfig {
@@ -12,6 +14,7 @@ export interface BlogConfig {
   postsPerPage: number;
   sortByDate: boolean;
   showAbout: boolean;
+  comments?: CommentsConfig;
 }
 
 export const blogConfig = (config: BlogConfig) => config;
