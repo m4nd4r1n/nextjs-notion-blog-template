@@ -10,4 +10,14 @@
   code {
     @apply !font-mono;
   }
+
+  body {
+    @apply scrollbar-none;
+  }
+
+  *:not(body) {
+    @apply scrollbar-thin scrollbar-track-transparent scrollbar-thumb-rounded;
+    @apply scrollbar-thumb-neutral-500/40 hover:scrollbar-thumb-neutral-500/60 active:scrollbar-thumb-neutral-500/80;
+    @apply dark:scrollbar-thumb-neutral-200/20 dark:hover:scrollbar-thumb-neutral-200/40 dark:active:scrollbar-thumb-neutral-200/60;
+  }
 }

@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import 'katex/dist/katex.min.css';
 
 import config from '@/../blog.config';
+import OverlayScrollbars from '@/app/overlay-scrollbars';
 import Footer from '@/components/footer';
 import Header from '@/components/header';
 import { codeFont, mainFont } from '@/libs/fonts';
@@ -38,6 +39,7 @@ const RootLayout = ({
             <Footer />
           </div>
         </div>
+        <OverlayScrollbars />
       </body>
     </html>
   );

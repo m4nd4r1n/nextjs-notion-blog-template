@@ -1,3 +1,4 @@
+import scrollbar from 'tailwind-scrollbar';
 import type { Config } from 'tailwindcss';
 import colors from 'tailwindcss/colors';
 import { fontFamily } from 'tailwindcss/defaultTheme';
@@ -90,7 +91,10 @@ const config: Config = {
       },
     },
   },
-  plugins: [convertRemToEm],
+  plugins: [
+    convertRemToEm,
+    scrollbar({ preferredStrategy: 'pseudoelements', nocompatible: true }),
+  ],
 };
 
 export default config;
