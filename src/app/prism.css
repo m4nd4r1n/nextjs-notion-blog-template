@@ -1,0 +1,78 @@
+/* prism theme adjustments */
+@layer components {
+  code[class*='language-'],
+  pre[class*='language-'] {
+    @apply [text-shadow:none];
+  }
+
+  pre[class*='language-']::selection,
+  pre[class*='language-'] ::selection,
+  code[class*='language-']::selection,
+  code[class*='language-'] ::selection {
+    @apply dark:bg-[var(--select-color-1)];
+  }
+
+  .token.operator,
+  .token.entity,
+  .token.url,
+  .language-css .token.string,
+  .style .token.string {
+    @apply bg-inherit;
+  }
+
+  .token.comment,
+  .token.prolog,
+  .token.doctype,
+  .token.cdata {
+    @apply dark:text-[hsl(30,20%,50%)];
+  }
+
+  .token.namespace,
+  .token.punctuation {
+    @apply dark:opacity-70;
+  }
+
+  .token.function,
+  .token.class-name {
+    @apply dark:text-inherit;
+  }
+
+  .token.property,
+  .token.tag,
+  .token.boolean,
+  .token.number,
+  .token.constant,
+  .token.symbol,
+  .token.atrule,
+  .token.attr-value,
+  .token.keyword {
+    @apply dark:text-[hsl(350,40%,70%)];
+  }
+
+  .token.selector,
+  .token.attr-name,
+  .token.string,
+  .token.char,
+  .token.builtin,
+  .token.inserted {
+    @apply dark:text-[hsl(75,70%,60%)];
+  }
+
+  .token.operator,
+  .token.entity,
+  .token.url,
+  .language-css .token.string,
+  .style .token.string,
+  .token.variable {
+    @apply dark:text-[hsl(40,90%,60%)];
+  }
+
+  .token.regex,
+  .token.important {
+    @apply dark:text-[#e90];
+  }
+
+  .token.deleted {
+    @apply dark:text-[red];
+  }
+}

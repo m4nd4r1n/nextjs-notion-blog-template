@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 
+import 'katex/dist/katex.min.css';
+
 import config from '@/../blog.config';
 import Footer from '@/components/footer';
 import Header from '@/components/header';
@@ -24,7 +26,7 @@ const RootLayout = ({
     <html lang={lang}>
       <body
         className={cn(
-          'font-sans antialiased',
+          'bg-day font-sans antialiased dark:bg-night',
           mainFont.variable,
           codeFont.variable,
         )}
@@ -32,7 +34,7 @@ const RootLayout = ({
         <div className='mx-auto max-w-3xl px-4 sm:px-6'>
           <div className='flex min-h-screen flex-col justify-between'>
             <Header />
-            <main className='flex-grow'>{children}</main>
+            <main className='flex-grow pt-[4.25rem]'>{children}</main>
             <Footer />
           </div>
         </div>

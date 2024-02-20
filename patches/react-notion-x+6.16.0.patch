@@ -1,0 +1,41 @@
+diff --git a/node_modules/react-notion-x/build/index.js b/node_modules/react-notion-x/build/index.js
+index a18bcfd..b535426 100644
+--- a/node_modules/react-notion-x/build/index.js
++++ b/node_modules/react-notion-x/build/index.js
+@@ -2291,11 +2291,24 @@ var Block = (props) => {
+     }
+     case "bulleted_list":
+     case "numbered_list": {
++      const levels = ['first', 'second', 'third']
++      let blockLevel = 0
++      let listBlock = block
++      const MAX_LEVEL = 10
++      while(listBlock) {
++        if (blockLevel > MAX_LEVEL) break
++        if(listBlock.type === recordMap.block[listBlock.parent_id]?.value?.type) {
++          listBlock = recordMap.block[listBlock.parent_id]?.value
++          blockLevel += 1
++        } else {
++          listBlock = null
++        }
++      }
+       const wrapList = (content, start2) => block.type === "bulleted_list" ? /* @__PURE__ */ React28.createElement("ul", {
+-        className: cs("notion-list", "notion-list-disc", blockId)
++        className: cs("notion-list", "notion-list-disc", blockId, levels[blockLevel % 3])
+       }, content) : /* @__PURE__ */ React28.createElement("ol", {
+         start: start2,
+-        className: cs("notion-list", "notion-list-numbered", blockId)
++        className: cs("notion-list", "notion-list-numbered", blockId, levels[blockLevel % 3])
+       }, content);
+       let output = null;
+       if (block.content) {
+@@ -2606,6 +2619,9 @@ var Block = (props) => {
+         className: blockId
+       });
+     default:
++      if (components[block.type]) {
++        return /* @__PURE__ */ React28.createElement(components[block.type], { block }, children)
++      }
+       if (true) {
+         console.log(
+           "Unsupported type " + block.type,

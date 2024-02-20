@@ -1,0 +1,169 @@
+@layer utilities {
+  .hover-active {
+    @apply motion-safe:transition-colors;
+    @apply hover:bg-accent-light/8 active:bg-accent-light/16;
+    @apply dark:hover:bg-accent-dark/5.5 dark:active:bg-accent-dark/3;
+  }
+}
+
+/* notion style adjustments */
+@layer components {
+  :root {
+    --notion-gray: theme('textColor.gray.light');
+    --notion-brown: theme('textColor.brown.light');
+    --notion-orange: theme('textColor.orange.light');
+    --notion-yellow: theme('textColor.yellow.light');
+    --notion-teal: theme('textColor.green.light');
+    --notion-blue: theme('textColor.blue.light');
+    --notion-purple: theme('textColor.purple.light');
+    --notion-pink: theme('textColor.pink.light');
+    --notion-red: theme('textColor.red.light');
+
+    --notion-gray_background: theme('backgroundColor.gray.light');
+    --notion-brown_background: theme('backgroundColor.brown.light');
+    --notion-orange_background: theme('backgroundColor.orange.light');
+    --notion-yellow_background: theme('backgroundColor.yellow.light');
+    --notion-teal_background: theme('backgroundColor.green.light');
+    --notion-blue_background: theme('backgroundColor.blue.light');
+    --notion-purple_background: theme('backgroundColor.purple.light');
+    --notion-pink_background: theme('backgroundColor.pink.light');
+    --notion-red_background: theme('backgroundColor.red.light');
+  }
+  :root.dark,
+  .dark-mode {
+    --notion-gray: theme('textColor.gray.dark');
+    --notion-brown: theme('textColor.brown.dark');
+    --notion-orange: theme('textColor.orange.dark');
+    --notion-yellow: theme('textColor.yellow.dark');
+    --notion-teal: theme('textColor.green.dark');
+    --notion-blue: theme('textColor.blue.dark');
+    --notion-purple: theme('textColor.purple.dark');
+    --notion-pink: theme('textColor.pink.dark');
+    --notion-red: theme('textColor.red.dark');
+
+    --notion-gray_background: theme('backgroundColor.gray.dark');
+    --notion-brown_background: theme('backgroundColor.brown.dark');
+    --notion-orange_background: theme('backgroundColor.orange.dark');
+    --notion-yellow_background: theme('backgroundColor.yellow.dark');
+    --notion-teal_background: theme('backgroundColor.green.dark');
+    --notion-blue_background: theme('backgroundColor.blue.dark');
+    --notion-purple_background: theme('backgroundColor.purple.dark');
+    --notion-pink_background: theme('backgroundColor.pink.dark');
+    --notion-red_background: theme('backgroundColor.red.dark');
+  }
+
+  .notion {
+    @apply break-words text-neutral-700 dark:text-neutral-200;
+  }
+
+  .notion.notion-page {
+    @apply w-auto px-0;
+  }
+
+  /* properties */
+  .notion .notion-collection-page-properties {
+    @apply hidden;
+  }
+
+  /* caption */
+  .notion .notion-asset-caption {
+    @apply text-center text-neutral-500 dark:text-neutral-400;
+  }
+
+  /* quote */
+  .notion .notion-quote {
+    @apply [font-size:inherit];
+  }
+
+  /* list */
+  .notion > .notion-list {
+    @apply py-0;
+  }
+  .notion .notion-list {
+    @apply max-w-full;
+  }
+  .notion .notion-list li {
+    @apply py-1;
+  }
+  .notion .notion-list:not(:has(> li)) {
+    @apply p-0;
+  }
+  .notion li + .notion-list-disc.first {
+    @apply list-[circle];
+  }
+  .notion .notion-list-disc.second {
+    @apply list-[square];
+  }
+  .notion .notion-list-disc.third {
+    @apply list-disc;
+  }
+  .notion li + .notion-list-numbered.first {
+    @apply list-[lower-alpha];
+  }
+  .notion .notion-list-numbered.second {
+    @apply list-[lower-roman];
+  }
+  .notion .notion-list-numbered.third {
+    @apply list-decimal;
+  }
+
+  /* callout */
+  .notion .notion-callout {
+    @apply rounded-md border-0;
+  }
+
+  /* hr */
+  .notion .notion-hr {
+    @apply border-t border-solid;
+  }
+
+  /* bookmark */
+  .notion .notion-bookmark {
+    @apply hover-active;
+  }
+
+  /* collection */
+  .notion .notion-collection {
+    @apply max-w-full;
+  }
+  .notion .notion-table {
+    @apply !w-full !max-w-full;
+  }
+  .notion .notion-page-link {
+    @apply text-inherit;
+  }
+  .notion svg.notion-page-icon {
+    @apply hidden;
+  }
+  .notion .notion-page-title-text {
+    @apply border-b-0;
+  }
+  .notion .notion-collection-header {
+    @apply px-0;
+  }
+  .notion .notion-table-view {
+    @apply !px-0;
+  }
+  .notion .notion-board,
+  .notion .notion-collection-view-tabs-row {
+    @apply w-full;
+  }
+
+  /* h */
+  .notion .notion-h {
+    @apply w-full;
+  }
+  .notion-toggle .notion-h {
+    @apply w-fit;
+  }
+
+  /* Tweet */
+  .notion .react-tweet-theme {
+    @apply bg-transparent;
+  }
+
+  /* hash link */
+  .notion .notion-hash-link {
+    @apply absolute left-0 top-1/2 float-none -translate-y-1/2 pr-0;
+  }
+}

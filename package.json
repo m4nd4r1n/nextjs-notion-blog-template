@@ -7,17 +7,24 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "prepare": "husky"
+    "prepare": "husky",
+    "postinstall": "bunx patch-package"
   },
   "dependencies": {
+    "@heroicons/react": "^2.1.1",
+    "canvas": "^2.11.2",
     "clsx": "^2.1.0",
     "cva": "npm:class-variance-authority",
+    "mermaid": "^10.8.0",
     "next": "14.1.0",
     "notion-client": "^6.16.0",
     "notion-types": "^6.16.0",
     "notion-utils": "^6.16.0",
+    "prismjs": "^1.29.0",
     "react": "^18",
     "react-dom": "^18",
+    "react-notion-x": "^6.16.0",
+    "react-tweet": "^3.2.0",
     "tailwind-merge": "^2.2.1"
   },
   "devDependencies": {
@@ -25,6 +32,7 @@
     "@commitlint/config-conventional": "^18.6.2",
     "@trivago/prettier-plugin-sort-imports": "^4.3.0",
     "@types/node": "^20",
+    "@types/prismjs": "^1.26.3",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "@typescript-eslint/eslint-plugin": "^7.0.2",
@@ -36,6 +44,7 @@
     "husky": "^9.0.11",
     "lint-staged": "^15.2.2",
     "postcss": "^8",
+    "postcss-import": "^16.0.1",
     "prettier": "^3.2.5",
     "prettier-plugin-tailwindcss": "^0.5.11",
     "tailwindcss": "^3.3.0",
