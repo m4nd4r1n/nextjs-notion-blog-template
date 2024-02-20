@@ -12,6 +12,7 @@ export default blogConfig({
   sortByDate: true,
   showAbout: true,
   siteLogo: '/logo.png',
+  socialLink: 'https://github.com/m4nd4r1n',
   comments: {
     provider: 'giscus',
     giscusConfig: {

@@ -14,6 +14,7 @@ export interface BlogConfig {
   postsPerPage: number;
   sortByDate: boolean;
   showAbout: boolean;
+  socialLink: string;
   comments?: CommentsConfig;
 }
 
