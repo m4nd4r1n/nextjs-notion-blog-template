@@ -4,16 +4,18 @@ import FormattedDate from '@/components/formatted-date';
 import Link from '@/components/link';
 import TagItem from '@/components/tag-item';
 import type { Post } from '@/types';
+import { cn } from '@/utils/cn';
 
 interface PostListItemProps {
   post: Post;
+  isWide?: boolean;
 }
 
-const PostListItem: FC<PostListItemProps> = ({ post }) => {
+const PostListItem: FC<PostListItemProps> = ({ post, isWide = false }) => {
   const postHref = `/${encodeURIComponent(post.slug ?? '')}`;
 
   return (
-    <li className='py-10'>
+    <li className={cn({ 'py-10': isWide, 'py-4': !isWide })}>
       <article key={post.id} className='space-y-2'>
         <FormattedDate date={post.date} />
         <div className='space-y-5'>
@@ -36,11 +38,13 @@ const PostListItem: FC<PostListItemProps> = ({ post }) => {
               {post.summary}
             </div>
           </div>
-          <div className='text-base font-medium leading-6'>
-            <Link href={postHref} aria-label={`Read "${post.title}"`}>
-              Read more &rarr;
-            </Link>
-          </div>
+          {isWide && (
+            <div className='text-base font-medium leading-6'>
+              <Link href={postHref} aria-label={`Read "${post.title}"`}>
+                Read more &rarr;
+              </Link>
+            </div>
+          )}
         </div>
       </article>
     </li>

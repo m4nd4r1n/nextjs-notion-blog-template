@@ -24,7 +24,7 @@ const ListLayout: FC<ListLayoutProps> = ({
     <>
       <ul className='divide-y divide-neutral-200 dark:divide-neutral-700'>
         {postsToShow.map((post) => (
-          <PostListItem key={post.id} post={post} />
+          <PostListItem key={post.id} post={post} isWide />
         ))}
       </ul>
       {(currentPage !== 1 || showNext) && (
