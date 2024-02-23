@@ -5,6 +5,7 @@ import { type FC, useCallback, useRef, useState } from 'react';
 
 import { ClipboardDocumentIcon } from '@heroicons/react/24/outline';
 import mermaid from 'mermaid';
+import { useTheme } from 'next-themes';
 import type { CodeBlock } from 'notion-types';
 import { getTextContent } from 'notion-utils';
 import { highlightElement } from 'prismjs';
@@ -23,6 +24,7 @@ const LANG = Object.freeze({
 const Code: FC<CodeProps> = ({ block }) => {
   const [isCopied, setIsCopied] = useState(false);
   const copyTimeout = useRef<number | null>();
+  const { theme, resolvedTheme } = useTheme();
 
   if (block.properties.language[0][0].toLowerCase() === LANG.ASSEMBLY)
     block.properties.language = [[LANG.ARM_ASSEMBLY]];
@@ -32,6 +34,7 @@ const Code: FC<CodeProps> = ({ block }) => {
   const { caption } = block.properties;
   const { id } = block;
   const isMermaid = language === LANG.MERMAID;
+  const isDark = theme === 'dark' || resolvedTheme === 'dark';
 
   const handleCopy = async () => {
     await navigator.clipboard.writeText(content);
@@ -60,7 +63,7 @@ const Code: FC<CodeProps> = ({ block }) => {
     (el: HTMLDivElement | null) => {
       if (!el) return;
       mermaid.initialize({
-        theme: 'neutral',
+        theme: isDark ? 'dark' : 'neutral',
       });
       mermaid
         .render(`mermaid-${id}`, content)
@@ -69,7 +72,7 @@ const Code: FC<CodeProps> = ({ block }) => {
           bindFunctions?.(el);
         });
     },
-    [id, content],
+    [id, content, isDark],
   );
 
   return (

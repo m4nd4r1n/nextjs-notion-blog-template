@@ -72,6 +72,8 @@ const config: Config = {
           light: 'rgba(55,53,47)',
           dark: 'rgba(255,255,255)',
         },
+        sun: 'rgb(255,215,0)',
+        moon: 'rgb(221,221,221)',
       },
       textColor: {
         red: { light: 'rgb(224,62,62)', dark: 'rgb(223,84,82)' },
@@ -88,6 +90,18 @@ const config: Config = {
           light: 'rgb(31,41,55)',
           dark: 'rgb(229,231,235)',
         },
+      },
+      boxShadow: {
+        light:
+          'inset 0 -1px 2px rgb(152,116,22), 0 1px 2px rgba(128,128,128,0.47), 0 0 0 6px rgba(255,255,255,0.13), 0 0 0 12px rgba(255,255,255,0.13), 6px 0 0 12px rgba(255,255,255,0.13)',
+        dark: 'inset 0 -1px 2px rgb(128,128,128), 0 1px 2px #555555, 0 0 0 6px #ffffff22, 0 0 0 12px #ffffff22, -6px 0 0 12px #ffffff22',
+        inset: 'inset 0 0 3px',
+        cloud:
+          '0 -5px 2px 4px white, -8px 1px 2px 6px white, -30px 5px 2px 5px white, -19.5px 10px 2px 8px white',
+      },
+      backgroundImage: {
+        'gradient-light': 'linear-gradient(rgb(135,206,235), rgb(95,158,160))',
+        'gradient-dark': 'linear-gradient(-45deg, rgb(34,34,34), rgb(0,0,48))',
       },
     },
   },

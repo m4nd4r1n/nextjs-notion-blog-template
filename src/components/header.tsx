@@ -4,7 +4,9 @@ import Image from 'next/image';
 import { useState } from 'react';
 
 import config from '@/../blog.config';
+import Client from '@/components/client';
 import Link from '@/components/link';
+import ThemeSwitch, { ThemeSwitchSkeleton } from '@/components/theme-switch';
 import useOnScroll from '@/hooks/use-on-scroll';
 import { cn } from '@/utils/cn';
 
@@ -81,6 +83,9 @@ const NavBar = () => {
               </li>
             ),
         )}
+        <Client fallback={<ThemeSwitchSkeleton />}>
+          <ThemeSwitch />
+        </Client>
       </ul>
     </div>
   );

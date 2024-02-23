@@ -8,6 +8,7 @@ export default blogConfig({
   description: "m4nd4r1n's Devlog.",
   locale: 'ko-KR',
   timezone: 'Asia/Seoul',
+  theme: 'system',
   postsPerPage: 4,
   sortByDate: true,
   showAbout: true,

@@ -9,7 +9,7 @@ import { getAllPosts, getPage } from '@/libs/notion';
 
 import Comments from './comments';
 import Post from './post';
-import PostBackTop from './post-top-back';
+import PostTopHome from './post-top-home';
 import ScrollTopAndComment from './scroll-top-and-comment';
 
 interface Params {
@@ -55,7 +55,7 @@ const PostPage = async ({ params }: Params) => {
           <PrevNextPost posts={posts} slug={slug} />
         </>
       )}
-      <PostBackTop />
+      <PostTopHome />
       <ScrollTopAndComment className='fixed bottom-8 right-8 w-fit xl:right-auto xl:translate-x-[57rem]' />
     </div>
   );

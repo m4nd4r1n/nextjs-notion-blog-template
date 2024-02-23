@@ -6,6 +6,7 @@ export interface BlogConfig {
   title: string;
   author: string;
   description: string;
+  theme: 'light' | 'dark' | 'system';
   locale: Locale;
   timezone: string;
   email: string;

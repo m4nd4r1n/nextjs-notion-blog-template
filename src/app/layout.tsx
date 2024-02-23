@@ -4,6 +4,7 @@ import 'katex/dist/katex.min.css';
 
 import config from '@/../blog.config';
 import OverlayScrollbars from '@/app/overlay-scrollbars';
+import ThemeProvider from '@/app/theme-provider';
 import Footer from '@/components/footer';
 import Header from '@/components/header';
 import { codeFont, mainFont } from '@/libs/fonts';
@@ -24,7 +25,7 @@ const RootLayout = ({
   const lang = config.locale.slice(0, 2);
 
   return (
-    <html lang={lang}>
+    <html lang={lang} suppressHydrationWarning>
       <body
         className={cn(
           'bg-day font-sans antialiased dark:bg-night',
@@ -32,14 +33,16 @@ const RootLayout = ({
           codeFont.variable,
         )}
       >
-        <div className='mx-auto max-w-3xl px-4 sm:px-6'>
-          <div className='flex min-h-screen flex-col justify-between'>
-            <Header />
-            <main className='flex-grow pt-[4.25rem]'>{children}</main>
-            <Footer />
+        <ThemeProvider>
+          <div className='mx-auto max-w-3xl px-4 sm:px-6'>
+            <div className='flex min-h-screen flex-col justify-between'>
+              <Header />
+              <main className='flex-grow pt-[4.25rem]'>{children}</main>
+              <Footer />
+            </div>
           </div>
-        </div>
-        <OverlayScrollbars />
+          <OverlayScrollbars />
+        </ThemeProvider>
       </body>
     </html>
   );

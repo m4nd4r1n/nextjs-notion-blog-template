@@ -13,11 +13,13 @@
   "dependencies": {
     "@giscus/react": "^3.0.0",
     "@heroicons/react": "^2.1.1",
+    "@radix-ui/react-switch": "^1.0.3",
     "canvas": "^2.11.2",
     "clsx": "^2.1.0",
     "cva": "npm:class-variance-authority",
     "mermaid": "^10.8.0",
     "next": "14.1.0",
+    "next-themes": "^0.2.1",
     "notion-client": "^6.16.0",
     "notion-types": "^6.16.0",
     "notion-utils": "^6.16.0",

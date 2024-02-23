@@ -2,7 +2,7 @@
 
 import Link from '@/components/link';
 
-const PostBackTop = () => {
+const PostTopHome = () => {
   const handleScrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -12,7 +12,7 @@ const PostBackTop = () => {
 
   return (
     <div className='flex justify-between py-4 font-medium'>
-      <Link href='/'>&larr; Back</Link>
+      <Link href='/'>&larr; Home</Link>
       <a className='block md:hidden'>
         <button
           onClick={handleScrollToTop}
@@ -25,4 +25,4 @@ const PostBackTop = () => {
   );
 };
 
-export default PostBackTop;
+export default PostTopHome;
