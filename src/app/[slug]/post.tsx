@@ -54,7 +54,7 @@ const Post: FC<PostProps> = ({ post, blockMap, emailHash }) => {
 
       {post.pageCover && (
         <div className='w-full py-8'>
-          <div className='relative h-64 md:h-80'>
+          <div className='relative h-64 sm:h-80'>
             <Image
               className='rounded object-cover'
               src={post.pageCover}

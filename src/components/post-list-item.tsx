@@ -2,6 +2,7 @@ import type { FC } from 'react';
 
 import FormattedDate from '@/components/formatted-date';
 import Link from '@/components/link';
+import ReadMore from '@/components/read-more';
 import TagItem from '@/components/tag-item';
 import type { Post } from '@/types';
 import { cn } from '@/utils/cn';
@@ -38,13 +39,7 @@ const PostListItem: FC<PostListItemProps> = ({ post, isWide = false }) => {
               {post.summary}
             </div>
           </div>
-          {isWide && (
-            <div className='text-base font-medium leading-6'>
-              <Link href={postHref} aria-label={`Read "${post.title}"`}>
-                Read more &rarr;
-              </Link>
-            </div>
-          )}
+          {isWide && <ReadMore title={post.title} postHref={postHref} />}
         </div>
       </article>
     </li>

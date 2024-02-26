@@ -1,8 +1,9 @@
 import { notFound } from 'next/navigation';
-import type { FC } from 'react';
+import type { FC, PropsWithChildren } from 'react';
 
 import Link from '@/components/link';
 import PostListItem from '@/components/post-list-item';
+import { getScopedI18n } from '@/i18n/server';
 import type { Post } from '@/types';
 
 interface ListLayoutProps {
@@ -46,30 +47,26 @@ interface PaginationProps {
   showNext: boolean;
 }
 
-const Pagination: FC<PaginationProps> = ({
+const Pagination: FC<PaginationProps> = async ({
   currentPage,
   totalPages,
   showNext,
 }) => {
+  const t = await getScopedI18n('pagination');
   const isFirstPage = currentPage === 1;
   const isSecondPage = currentPage === 2;
 
   return (
     <nav className='flex justify-between'>
       {isFirstPage ? (
-        <button
-          className='text-neutral-900 opacity-50 dark:text-neutral-100'
-          disabled={isFirstPage}
-        >
-          &larr; Prev
-        </button>
+        <DisabledButton>&larr; {t('prev')}</DisabledButton>
       ) : (
         <Link
           className='block'
           href={isSecondPage ? '/' : `/page/${currentPage - 1}`}
           rel='prev'
         >
-          &larr; Prev
+          &larr; {t('prev')}
         </Link>
       )}
 
@@ -79,16 +76,21 @@ const Pagination: FC<PaginationProps> = ({
 
       {showNext ? (
         <Link className='block' href={`/page/${currentPage + 1}`} rel='next'>
-          Next &rarr;
+          {t('next')} &rarr;
         </Link>
       ) : (
-        <button
-          className='text-neutral-900 opacity-50 dark:text-neutral-100'
-          disabled={!showNext}
-        >
-          Next &rarr;
-        </button>
+        <DisabledButton>{t('next')} &rarr;</DisabledButton>
       )}
     </nav>
+  );
+};
+
+const DisabledButton: FC<PropsWithChildren> = (props) => {
+  return (
+    <button
+      className='invisible text-neutral-900 opacity-50 dark:text-neutral-100'
+      disabled
+      {...props}
+    />
   );
 };

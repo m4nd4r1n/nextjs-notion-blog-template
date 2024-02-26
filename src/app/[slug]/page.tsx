@@ -1,15 +1,16 @@
 import { notFound } from 'next/navigation';
 
 import { createHash } from 'crypto';
+import { setStaticParamsLocale } from 'next-international/server';
 
 import config from '@/../blog.config';
-import PrevNextPost from '@/app/[slug]/prev-next-post';
-import TagItem from '@/components/tag-item';
 import { getAllPosts, getPage } from '@/libs/notion';
 
 import Comments from './comments';
 import Post from './post';
+import PostTags from './post-tags';
 import PostTopHome from './post-top-home';
+import PrevNextPost from './prev-next-post';
 import ScrollTopAndComment from './scroll-top-and-comment';
 
 interface Params {
@@ -22,6 +23,7 @@ const PostPage = async ({ params }: Params) => {
   const posts = await getAllPosts({ includePages: true });
   const slug = decodeURIComponent(params.slug);
   if (!posts) notFound();
+  setStaticParamsLocale(config.locale);
 
   const post = posts.find((post) => post.slug === slug);
   if (!post || !post.id) notFound();
@@ -40,18 +42,7 @@ const PostPage = async ({ params }: Params) => {
       {post.type?.[0] === 'Post' && (
         <>
           <Comments />
-          {post.tags && (
-            <div className='py-4'>
-              <h2 className='text-xs uppercase tracking-wide text-gray-500 dark:text-gray-400'>
-                Tags
-              </h2>
-              <div className='flex flex-wrap'>
-                {post.tags.map((tag) => (
-                  <TagItem key={tag.tag} {...tag} />
-                ))}
-              </div>
-            </div>
-          )}
+          <PostTags tags={post.tags} />
           <PrevNextPost posts={posts} slug={slug} />
         </>
       )}

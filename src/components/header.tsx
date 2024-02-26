@@ -8,6 +8,7 @@ import Client from '@/components/client';
 import Link from '@/components/link';
 import ThemeSwitch, { ThemeSwitchSkeleton } from '@/components/theme-switch';
 import useOnScroll from '@/hooks/use-on-scroll';
+import { I18nProviderClient, useScopedI18n } from '@/i18n/client';
 import { cn } from '@/utils/cn';
 
 const Header = () => {
@@ -57,10 +58,20 @@ type Link = {
 };
 
 const NavBar = () => {
+  return (
+    <I18nProviderClient>
+      <NavBarImpl />
+    </I18nProviderClient>
+  );
+};
+
+const NavBarImpl = () => {
+  const t = useScopedI18n('nav');
+
   const links: Link[] = [
-    { id: 0, name: 'Blog', to: '/', show: true },
-    { id: 1, name: 'About', to: '/about', show: config.showAbout },
-    { id: 2, name: 'Search', to: '/search', show: true },
+    { id: 0, name: t('index'), to: '/', show: true },
+    { id: 1, name: t('about'), to: '/about', show: config.showAbout },
+    { id: 2, name: t('search'), to: '/search', show: true },
   ];
 
   return (
@@ -83,9 +94,11 @@ const NavBar = () => {
               </li>
             ),
         )}
-        <Client fallback={<ThemeSwitchSkeleton />}>
-          <ThemeSwitch />
-        </Client>
+        <li>
+          <Client fallback={<ThemeSwitchSkeleton />}>
+            <ThemeSwitch />
+          </Client>
+        </li>
       </ul>
     </div>
   );

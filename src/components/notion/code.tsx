@@ -11,6 +11,8 @@ import { getTextContent } from 'notion-utils';
 import { highlightElement } from 'prismjs';
 import { Text } from 'react-notion-x';
 
+import { I18nProviderClient, useScopedI18n } from '@/i18n/client';
+
 interface CodeProps {
   block: CodeBlock;
 }
@@ -21,10 +23,19 @@ const LANG = Object.freeze({
   ARM_ASSEMBLY: 'armasm',
 });
 
-const Code: FC<CodeProps> = ({ block }) => {
+const Code: FC<CodeProps> = (props) => {
+  return (
+    <I18nProviderClient>
+      <CodeImpl {...props} />
+    </I18nProviderClient>
+  );
+};
+
+const CodeImpl: FC<CodeProps> = ({ block }) => {
   const [isCopied, setIsCopied] = useState(false);
   const copyTimeout = useRef<number | null>();
   const { theme, resolvedTheme } = useTheme();
+  const t = useScopedI18n('code');
 
   if (block.properties.language[0][0].toLowerCase() === LANG.ASSEMBLY)
     block.properties.language = [[LANG.ARM_ASSEMBLY]];
@@ -84,12 +95,14 @@ const Code: FC<CodeProps> = ({ block }) => {
             onClick={handleCopy}
           >
             <ClipboardDocumentIcon className='h-4 w-4' />
-            Copy
+            {t('copy')}
           </button>
 
           {isCopied && (
             <div className='notion-code-copy-tooltip'>
-              <div className='border-neutral-200/20 dark:border'>Copied</div>
+              <div className='border-neutral-200/20 dark:border'>
+                {t('copied')}
+              </div>
             </div>
           )}
         </div>

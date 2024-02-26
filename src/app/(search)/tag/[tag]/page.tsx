@@ -1,5 +1,8 @@
 import { notFound } from 'next/navigation';
 
+import { setStaticParamsLocale } from 'next-international/server';
+
+import config from '@/../blog.config';
 import SearchLayout from '@/layouts/search-layout';
 import { getAllPosts, getTagsAndCountsFromPosts } from '@/libs/notion';
 
@@ -13,6 +16,7 @@ const TagPage = async ({ params }: TagPageProps) => {
   const posts = await getAllPosts({ includePages: false });
   const currentTag = decodeURIComponent(params.tag);
   if (!posts || !currentTag) return notFound();
+  setStaticParamsLocale(config.locale);
 
   const [tags, tagCounts] = getTagsAndCountsFromPosts(posts);
   const filteredPosts = posts.filter((post) =>

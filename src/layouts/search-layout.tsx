@@ -6,6 +6,7 @@ import { type FC, useState } from 'react';
 import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 
 import PostListItem from '@/components/post-list-item';
+import { I18nProviderClient, useScopedI18n } from '@/i18n/client';
 import type { Post } from '@/types';
 import { cn } from '@/utils/cn';
 
@@ -16,13 +17,22 @@ interface SearchProps {
   currentTag?: string;
 }
 
-const SearchLayout: FC<SearchProps> = ({
+const SearchLayout: FC<SearchProps> = (props) => {
+  return (
+    <I18nProviderClient>
+      <SearchLayoutImpl {...props} />
+    </I18nProviderClient>
+  );
+};
+
+const SearchLayoutImpl: FC<SearchProps> = ({
   tags,
   tagCounts,
   posts,
   currentTag,
 }) => {
   const [searchValue, setSearchValue] = useState('');
+  const t = useScopedI18n('search');
 
   const filteredPosts = posts.filter((post) => {
     const tagContent = post.tags.map(({ tag }) => tag).join(' ');
@@ -34,14 +44,16 @@ const SearchLayout: FC<SearchProps> = ({
     <>
       <div className='relative mt-4'>
         <label htmlFor='search' className='sr-only'>
-          Search
+          {t('input.label')}
         </label>
         <input
           id='search'
           name='search'
           type='text'
           placeholder={
-            currentTag ? `Search in #${currentTag}` : 'Search Articles'
+            currentTag
+              ? t('input.placeholder.tag_selected', { currentTag })
+              : t('input.placeholder.default')
           }
           className='block h-9 w-full rounded-md border border-neutral-200 bg-transparent pl-3 pr-10 text-sm shadow-sm placeholder:text-neutral-500 focus-visible:border-primary-400 focus-visible:outline-none motion-safe:transition-colors'
           onChange={(e) => setSearchValue(e.target.value)}
@@ -63,7 +75,7 @@ const SearchLayout: FC<SearchProps> = ({
 
       <ul className='my-4 divide-y'>
         {!filteredPosts.length && (
-          <p className='text-gray-500 dark:text-gray-300'>No posts found.</p>
+          <p className='text-gray-500 dark:text-gray-300'>{t('no_post')}</p>
         )}
         {filteredPosts.slice(0, 20).map((post) => (
           <PostListItem key={post.id} post={post} />

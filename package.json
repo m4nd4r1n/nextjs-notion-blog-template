@@ -19,6 +19,7 @@
     "cva": "npm:class-variance-authority",
     "mermaid": "^10.8.0",
     "next": "14.1.0",
+    "next-international": "^1.2.4",
     "next-themes": "^0.2.1",
     "notion-client": "^6.16.0",
     "notion-types": "^6.16.0",

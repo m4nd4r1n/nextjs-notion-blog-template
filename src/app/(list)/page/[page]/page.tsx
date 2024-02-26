@@ -1,5 +1,7 @@
 import { notFound } from 'next/navigation';
 
+import { setStaticParamsLocale } from 'next-international/server';
+
 import config from '@/../blog.config';
 import ListLayout from '@/layouts/list-layout';
 import { getAllPosts } from '@/libs/notion';
@@ -13,6 +15,7 @@ interface Params {
 const ListPage = async ({ params }: Params) => {
   const posts = await getAllPosts({ includePages: false });
   if (!posts) notFound();
+  setStaticParamsLocale(config.locale);
 
   const currentPage = Number(params.page);
   const postsToShow = posts.slice(

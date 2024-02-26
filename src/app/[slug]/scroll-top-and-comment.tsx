@@ -9,14 +9,26 @@ import {
 
 import config from '@/../blog.config';
 import useOnScroll from '@/hooks/use-on-scroll';
+import { I18nProviderClient, useScopedI18n } from '@/i18n/client';
 import { cn } from '@/utils/cn';
 
 interface ScrollTopAndCommentProps {
   className?: string;
 }
 
-const ScrollTopAndComment: FC<ScrollTopAndCommentProps> = ({ className }) => {
+const ScrollTopAndComment: FC<ScrollTopAndCommentProps> = (props) => {
+  return (
+    <I18nProviderClient>
+      <ScrollTopAndCommentImpl {...props} />
+    </I18nProviderClient>
+  );
+};
+
+const ScrollTopAndCommentImpl: FC<ScrollTopAndCommentProps> = ({
+  className,
+}) => {
   const [show, setShow] = useState(false);
+  const t = useScopedI18n('scroll.aria');
 
   const handleScrollToTop = () => {
     window.scrollTo({
@@ -42,14 +54,11 @@ const ScrollTopAndComment: FC<ScrollTopAndCommentProps> = ({ className }) => {
       })}
     >
       {config.comments?.provider && (
-        <CircleButton
-          aria-label='Scroll to comment'
-          onClick={handleScrollToComment}
-        >
+        <CircleButton aria-label={t('comment')} onClick={handleScrollToComment}>
           <ChatBubbleOvalLeftEllipsisIcon className='h-5 w-5' strokeWidth={2} />
         </CircleButton>
       )}
-      <CircleButton aria-label='Scroll to top' onClick={handleScrollToTop}>
+      <CircleButton aria-label={t('top')} onClick={handleScrollToTop}>
         <ArrowUpIcon className='h-5 w-5' strokeWidth={2} />
       </CircleButton>
     </div>
