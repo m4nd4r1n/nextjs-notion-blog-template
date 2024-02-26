@@ -15,6 +15,10 @@ export default {
     prev: 'Previous Article',
     next: 'Next Article',
   },
+  404: {
+    message: 'Nothing here',
+    go_home: 'Go to home',
+  },
   search: {
     input: {
       label: 'Search',

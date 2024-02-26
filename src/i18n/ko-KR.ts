@@ -15,6 +15,10 @@ export default {
     prev: '이전 글',
     next: '다음 글',
   },
+  404: {
+    message: '페이지를 찾을 수 없습니다.',
+    go_home: '홈으로 가기',
+  },
   search: {
     input: {
       label: '검색',
