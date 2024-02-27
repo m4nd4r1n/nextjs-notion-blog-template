@@ -166,4 +166,9 @@
   .notion .notion-hash-link {
     @apply absolute left-0 top-1/2 float-none -translate-y-1/2 pr-0;
   }
+
+  /* embeds */
+  .notion .notion-asset-wrapper iframe {
+    @apply bg-day;
+  }
 }

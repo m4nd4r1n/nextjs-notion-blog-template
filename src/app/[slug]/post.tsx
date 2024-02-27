@@ -47,7 +47,7 @@ const Post: FC<PostProps> = ({ post, blockMap, emailHash }) => {
           </nav>
         </>
       ) : (
-        <h1 className='w-full pt-20 text-3xl font-extrabold leading-9 tracking-tight text-neutral-900 dark:text-neutral-100 sm:text-4xl sm:leading-10'>
+        <h1 className='mb-4 w-full pt-20 text-3xl font-extrabold leading-9 tracking-tight text-neutral-900 dark:text-neutral-100 sm:text-4xl sm:leading-10'>
           {post.title}
         </h1>
       )}

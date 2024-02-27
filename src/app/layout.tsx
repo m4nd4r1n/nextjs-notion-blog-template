@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 
 import { GoogleAnalytics } from '@next/third-parties/google';
 import 'katex/dist/katex.min.css';
+import 'prismjs/themes/prism.min.css';
+import 'react-notion-x/src/styles.css';
 
 import config from '@/../blog.config';
 import PostHogProvider from '@/app/post-hog-provider';
