@@ -29,4 +29,13 @@ export default blogConfig({
       lang: 'ko',
     },
   },
+  analytics: {
+    googleAnalytics: {
+      googleAnalyticsId: process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID ?? '',
+    },
+    posthogAnalytics: {
+      posthogKey: process.env.NEXT_PUBLIC_POST_HOG_ID ?? '',
+      posthogApiHost: process.env.NEXT_PUBLIC_POST_HOG_API_HOST,
+    },
+  },
 });

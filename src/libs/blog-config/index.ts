@@ -1,3 +1,4 @@
+import { AnalyticsConfig } from './analytics';
 import { CommentsConfig } from './comments';
 
 export type Locale = 'en-US' | 'ko-KR';
@@ -17,6 +18,7 @@ export interface BlogConfig {
   showAbout: boolean;
   socialLink: string;
   comments?: CommentsConfig;
+  analytics?: AnalyticsConfig;
 }
 
 export const blogConfig = (config: BlogConfig) => config;
