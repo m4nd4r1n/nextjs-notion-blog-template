@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
 import { setStaticParamsLocale } from 'next-international/server';
@@ -19,3 +20,7 @@ const SearchPage = async () => {
 export default SearchPage;
 
 export const revalidate = 10;
+
+export const metadata: Metadata = {
+  title: 'Search',
+};

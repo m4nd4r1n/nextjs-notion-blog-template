@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
 import { setStaticParamsLocale } from 'next-international/server';
@@ -42,4 +43,12 @@ export const generateStaticParams = async (): Promise<{ tag: string }[]> => {
   if (!posts) return [];
   const [tags] = getTagsAndCountsFromPosts(posts);
   return tags.map((tag) => ({ tag }));
+};
+
+export const generateMetadata = ({ params }: TagPageProps): Metadata => {
+  const tag = decodeURIComponent(params.tag);
+
+  return {
+    title: tag,
+  };
 };

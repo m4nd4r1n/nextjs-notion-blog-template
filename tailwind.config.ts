@@ -3,6 +3,7 @@ import type { Config } from 'tailwindcss';
 import colors from 'tailwindcss/colors';
 import { fontFamily } from 'tailwindcss/defaultTheme';
 
+import conf from './blog.config';
 import { convertRemToEm } from './src/libs/tailwind/plugins';
 
 const opacity0_99 = {
@@ -45,8 +46,8 @@ const config: Config = {
         },
       },
       backgroundColor: {
-        day: colors.white,
-        night: 'rgb(24,24,27)',
+        day: conf.lightBg || colors.white,
+        night: conf.darkBg || 'rgb(24,24,27)',
         red: { light: 'rgb(253,235,236)', dark: 'rgb(82,46,42)' },
         pink: { light: 'rgb(249,238,243)', dark: 'rgb(78,44,60)' },
         blue: { light: 'rgb(231,243,248)', dark: 'rgb(20,58,78)' },

@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
 import { createHash } from 'crypto';
@@ -61,3 +62,43 @@ export const generateStaticParams = async (): Promise<{ slug: string }[]> => {
 };
 
 export const revalidate = 10;
+
+export const generateMetadata = async ({
+  params,
+}: Params): Promise<Metadata> => {
+  const posts = await getAllPosts({ includePages: true });
+  const slug = decodeURIComponent(params.slug);
+  if (!posts) return {};
+
+  const post = posts.find((post) => post.slug === slug);
+  if (!post || !post.id) return {};
+
+  const path = `/${slug}`;
+  const tags = post.tags.slice(0, 10).map(({ tag }) => tag);
+
+  return {
+    title: post.title,
+    description: post.summary,
+    alternates: {
+      canonical: path,
+    },
+    openGraph: {
+      title: post.title,
+      description: post.summary,
+      url: path,
+      siteName: config.title,
+      locale: config.locale,
+      type: 'article',
+      publishedTime: new Date(post.date).toISOString(),
+      modifiedTime: new Date(post.date).toISOString(),
+      authors: config.author,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: post.title,
+      description: post.summary,
+    },
+    keywords: tags,
+    authors: { name: config.author },
+  };
+};

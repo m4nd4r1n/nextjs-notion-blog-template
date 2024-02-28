@@ -19,6 +19,9 @@ export interface BlogConfig {
   socialLink: string;
   comments?: CommentsConfig;
   analytics?: AnalyticsConfig;
+  googleSiteVerification?: string;
+  lightBg?: string;
+  darkBg?: string;
 }
 
 export const blogConfig = (config: BlogConfig) => config;
