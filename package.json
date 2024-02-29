@@ -32,6 +32,7 @@
     "react-dom": "^18",
     "react-notion-x": "^6.16.0",
     "react-tweet": "^3.2.0",
+    "sharp": "^0.33.2",
     "tailwind-merge": "^2.2.1"
   },
   "devDependencies": {
