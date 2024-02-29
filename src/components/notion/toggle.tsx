@@ -25,9 +25,12 @@ export default function Toggle({ block, children }: ToggleProps) {
       )}
     >
       <summary
-        className={cn('relative flex cursor-pointer items-start', {
-          'cursor-default': !hasChildren,
-        })}
+        className={cn(
+          'relative flex cursor-pointer items-start [&::-webkit-details-marker]:hidden',
+          {
+            'cursor-default': !hasChildren,
+          },
+        )}
       >
         <span className='w-7 flex-none text-center leading-[inherit]'>
           <svg
