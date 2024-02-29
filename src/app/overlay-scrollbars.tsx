@@ -9,18 +9,19 @@ import 'overlayscrollbars/overlayscrollbars.css';
 const OverlayScrollbars = () => {
   const { theme, resolvedTheme } = useTheme();
   const isDark = theme === 'dark' || resolvedTheme === 'dark';
-  const [initBodyOverlayScrollbars] = useOverlayScrollbars({
+  const [initialize] = useOverlayScrollbars({
     defer: true,
     options: {
       scrollbars: {
         theme: isDark ? 'os-theme-light' : 'os-theme-dark',
+        autoHide: 'scroll',
       },
     },
   });
 
   useEffect(() => {
-    initBodyOverlayScrollbars(document.body);
-  }, [initBodyOverlayScrollbars]);
+    initialize(document.body);
+  }, [initialize]);
 
   return null;
 };
