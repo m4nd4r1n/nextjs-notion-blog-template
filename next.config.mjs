@@ -13,6 +13,7 @@ const nextConfig = {
     config.externals.push({ canvas: 'commonjs canvas' });
     return config;
   },
+  output: 'standalone',
 };
 
 export default nextConfig;
