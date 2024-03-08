@@ -1,12 +1,13 @@
 import { ImageResponse } from 'next/og';
 
-import * as fs from 'fs';
+import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
 import OgImage from '@/components/og-image';
 import { OG_FONT } from '@/constants/opengraph';
 import { getAllPosts } from '@/libs/notion';
+import { toArrayBuffer } from '@/utils/node';
 
 export const runtime = 'nodejs';
 export const size = {
@@ -61,6 +62,3 @@ const Image = async ({ params }: Params) => {
 };
 
 export default Image;
-
-const toArrayBuffer = (buffer: Buffer) =>
-  buffer.buffer.slice(buffer.byteOffset, buffer.byteOffset + buffer.byteLength);
