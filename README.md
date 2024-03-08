@@ -1,8 +1,8 @@
 # nextjs-notion-blog-template
 
-A [Next.js](https://nextjs.org/), [Tailwind CSS](https://tailwindcss.com/) blog template, based on [Next.js App Router](https://nextjs.org/docs/app) and using [react-notion-x](https://github.com/NotionX/react-notion-x) to render notion posts.
+A [Next.js](https://nextjs.org/), [Tailwind CSS](https://tailwindcss.com/) blog template, based on [Next.js App Router](https://nextjs.org/docs/app) and using [react-notion-x](https://github.com/NotionX/react-notion-x) to render notion posts. Inspired by [Tailwind Nextjs Starter Blog](https://github.com/timlrx/tailwind-nextjs-starter-blog), [Nobelium](https://github.com/craigary/nobelium).
 
-Inspired by [Tailwind Nextjs Starter Blog](https://github.com/timlrx/tailwind-nextjs-starter-blog), [Nobelium](https://github.com/craigary/nobelium).
+Demo: https://blog-demo.m4nd4r1n.me/
 
 ## Quick Start
 
