@@ -3,10 +3,8 @@
 import dynamic from 'next/dynamic';
 import { type ComponentPropsWithoutRef, type FC } from 'react';
 
-import { useTheme } from 'next-themes';
 import { NotionRenderer as Renderer } from 'react-notion-x';
 
-import Client from '@/components/client';
 import Toggle from '@/components/notion/toggle';
 
 const mapPageUrl = (id: string) =>
@@ -15,10 +13,6 @@ const mapPageUrl = (id: string) =>
 const NotionRenderer: FC<
   Omit<ComponentPropsWithoutRef<typeof Renderer>, 'components' | 'mapPageUrl'>
 > = (props) => {
-  const { theme, resolvedTheme } = useTheme();
-
-  const isDark = theme === 'dark' || resolvedTheme === 'dark';
-
   if (props.recordMap) {
     for (const { value: block } of Object.values(props.recordMap.block)) {
       switch (block?.type) {
@@ -30,18 +24,7 @@ const NotionRenderer: FC<
   }
 
   return (
-    <Client
-      fallback={
-        <Renderer components={components} mapPageUrl={mapPageUrl} {...props} />
-      }
-    >
-      <Renderer
-        components={components}
-        mapPageUrl={mapPageUrl}
-        darkMode={isDark}
-        {...props}
-      />
-    </Client>
+    <Renderer components={components} mapPageUrl={mapPageUrl} {...props} />
   );
 };
 

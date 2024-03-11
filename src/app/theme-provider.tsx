@@ -10,7 +10,7 @@ interface ThemeProviderProps extends PropsWithChildren {}
 
 const ThemeProvider: FC<ThemeProviderProps> = ({ children }) => {
   return (
-    <Provider attribute='class' defaultTheme={config.theme} enableSystem>
+    <Provider attribute='data-theme' defaultTheme={config.theme} enableSystem>
       {children}
     </Provider>
   );

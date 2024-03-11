@@ -29,8 +29,7 @@
     --notion-pink_background: theme('backgroundColor.pink.light');
     --notion-red_background: theme('backgroundColor.red.light');
   }
-  :root.dark,
-  .dark-mode {
+  [data-theme='dark'] {
     --notion-gray: theme('textColor.gray.dark');
     --notion-brown: theme('textColor.brown.dark');
     --notion-orange: theme('textColor.orange.dark');
