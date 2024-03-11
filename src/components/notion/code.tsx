@@ -88,8 +88,8 @@ const CodeImpl: FC<CodeProps> = ({ block }) => {
 
   return (
     <>
-      <pre className='notion-code !overflow-visible rounded !bg-code-light em:!p-10 dark:!bg-code-dark'>
-        <div className='notion-code-copy font-sans em:!right-2 em:!top-2'>
+      <pre className='notion-code'>
+        <div className='notion-code-copy'>
           <button
             className='hover-active inline-flex items-center gap-0.5 rounded-md border-0 bg-button-light text-xs shadow-none em:p-1.5 dark:bg-button-dark dark:text-code-dark'
             onClick={handleCopy}
@@ -108,10 +108,7 @@ const CodeImpl: FC<CodeProps> = ({ block }) => {
         </div>
 
         <div className='overflow-x-auto'>
-          <code
-            className={`language-${language} !whitespace-pre !rounded-none !bg-inherit !p-0 text-code-light dark:text-code-dark`}
-            ref={highlightRef}
-          >
+          <code className={`language-${language}`} ref={highlightRef}>
             {content}
           </code>
         </div>

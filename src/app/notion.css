@@ -171,4 +171,12 @@
   .notion .notion-asset-wrapper iframe {
     @apply bg-day;
   }
+
+  /* code */
+  .notion .notion-code {
+    @apply overflow-visible rounded bg-code-light em:p-10 dark:bg-code-dark;
+  }
+  .notion .notion-code-copy {
+    @apply font-sans em:right-2 em:top-2;
+  }
 }

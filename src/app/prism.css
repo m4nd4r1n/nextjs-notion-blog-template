@@ -2,14 +2,12 @@
 @layer components {
   code[class*='language-'],
   pre[class*='language-'] {
-    @apply [text-shadow:none];
+    @apply text-code-light [text-shadow:none] dark:text-code-dark;
+    @apply selection:bg-[var(--select-color-1)];
   }
 
-  pre[class*='language-']::selection,
-  pre[class*='language-'] ::selection,
-  code[class*='language-']::selection,
-  code[class*='language-'] ::selection {
-    @apply dark:bg-[var(--select-color-1)];
+  :not(pre) > code[class*='language-'] {
+    @apply whitespace-pre rounded-none bg-inherit p-0;
   }
 
   .token.operator,
